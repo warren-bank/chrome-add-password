@@ -1,0 +1,17 @@
+https://github.com/cortesi/devd
+https://github.com/cortesi/devd/releases
+
+https://github.com/cortesi/devd/releases/tag/v0.8
+https://github.com/cortesi/devd/releases/download/v0.8/devd-0.8-windows64.zip
+https://github.com/cortesi/devd/releases/download/v0.8/devd-0.8-windows32.zip
+
+version in repo: v0.8 x32
+
+notes:
+======
+* script will first check the following path:
+    C:\PortableApps\devd\devd.exe
+* if it exists,
+  then it is used
+* if it does not exist,
+  then the version in repo is used

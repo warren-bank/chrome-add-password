@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Site Login</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 2em 0 0 2em;
+    }
+    body > h2 {
+      margin: 0;
+      padding: 0;
+    }
+    form {
+      display: inline-block;
+      max-width: 75%;
+    }
+    form > ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    form > ul > li {
+      margin: 0;
+      padding: 1em 0;
+    }
+    form > ul > li + li {
+      border-top: 1px solid #ccc;
+    }
+    form > ul > li > * {
+      display: block;
+    }
+    form > ul > li > label + input {
+      margin-top: 0.5em;
+      padding: 0.25em;
+      width: 30em;
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 id="site-header"></h2>
+
+  <form name="login" action="success.html" method="get" accept-charset="utf-8">
+    <ul>
+      <li>
+        <label for="usermail">Email</label>
+        <input type="email" name="usermail" placeholder="yourname@email.com" required />
+      </li>
+      <li>
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="password" required />
+      </li>
+      <li>
+        <input type="submit" value="Login" />
+      </li>
+    </ul>
+  </form>
+
+  <script>
+    document.getElementById('site-header').innerText = 'Site Login: ' + window.location.hostname
+  </script>
+
+</body>
+</html>
