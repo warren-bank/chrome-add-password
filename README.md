@@ -13,7 +13,7 @@ scripts to:
 * edit the _hosts_ file
   * temporarily resolve any website to the local web server
 
-#### Usage - example
+#### Usage
 
 run:
 
@@ -66,7 +66,11 @@ issue:
     Network errors and attacks are usually temporary, so this page will probably work later.
   ```
 
-workaround:
+documentation to explain the cause:
+
+* [_Strict-Transport-Security_ response header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security)
+
+workaround option &num;1 _(preferred)_:
 
 * open: `chrome://net-internals/#hsts`
 * under: _Delete domain_
@@ -77,24 +81,25 @@ workaround:
   * click query
   * confirm: "Not found"
 
+workaround option &num;2:
+
+* use a local HTTPS web server that supports sending custom HTTP response headers
+  * send: "Strict-Transport-Security: max-age=0"
+* configure Chrome to trust the self-signed certificate used by the local HTTPS web server
+  * _Settings > Advanced > Manage Certificates > Trusted Root Certification Authorities > Import..._
+* follow the normal [_usage_](#usage) pattern, but open the web page in Chrome with HTTPS
+* remove the self-signed certificate used by the local HTTPS web server from Chrome's certificate store
+
+notes:
+
+* after the _hosts_ file has been reverted, such that the web page loads from its real origin
+  * the server response will include the _Strict-Transport-Security_ header
+  * the Chrome settings will revert to the value(s) specified in the server response
+
 example domains:
 
 * `accounts.google.com`
 * `github.com`
-
-observations:
-
-* I've observed the following:
-  * the settings page can be opened in an Incognito window
-    * when a domain is deleted in an Incognito window
-      * its settings are not deleted in the normal (non-incognito) context
-      * its settings are restored when the Incognito window is closed, and a new Incognito window is opened
-  * the settings page can be opened in a normal (non-incognito) window
-    * when a domain is deleted in a normal window
-      * its settings are restored when Chrome is restarted
-        * warning:
-          * I don't know whether this is true for all web sites
-          * assuming that the same rules apply to restoring domains in both Incognito and normal windows, it may be wise to first test deletion of the domain in an Incognito window
 
 #### Legal:
 
